@@ -25,6 +25,14 @@ public class SampleView : View<TestApplication> {
 	// update display once
 	private void UpdateDisplay (SampleModel sample) {
 		this.sampleText.text = sample.Name;
+		Color colors = new Color (255, 255, 255);
+		this.sampleText.color = colors;
+
+	}
+
+	private void UpdateTextColor (SampleModel sample){
+		Color colors = new Color(0, 0, 0);
+		this.sampleText.color = colors;
 	}
 
 	// bind to model
@@ -34,5 +42,11 @@ public class SampleView : View<TestApplication> {
 
 		// update model once
 		UpdateDisplay(sample);
+	}
+
+	public void OnColorChange () {
+		SampleModel sample = App.Model.Sample;
+
+		UpdateTextColor (sample);
 	}
 }

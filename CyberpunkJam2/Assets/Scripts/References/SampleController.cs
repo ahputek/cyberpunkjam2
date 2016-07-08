@@ -22,10 +22,32 @@ public class SampleController : Controller<TestApplication> {
 			// set name while injecting dependency to SampleModel
 			SetName(sampleModel, newName);
 		}
+
+		if (p_event.Equals (Constants.CHANGE)) {
+
+			SampleModel sampleModel = (SampleModel)p_data [0];
+
+			string newColor = p_data [1].ToString ();
+			/*string strColorR = p_data[0].ToString();
+			string strColorG = p_data[0].ToString();
+			string strColorB = p_data[0].ToString();
+			int newColorR = int.Parse(strColorR);
+			int newColorG = int.Parse(strColorG);
+			int newColorB = int.Parse(strColorB);*/
+
+			SetColor(sampleModel, newColor);
+		}
 	}
 
 	// inverts the control to the SampleModel argument
 	public void SetName (SampleModel sample, string name) {
 		sample.Name = name;
+	}
+
+	public void SetColor (SampleModel sample, string colors/*int colorsR, int colorsG, int colorsB*/) {
+		sample.Color = colors;
+		/*sample.ColorR = colorsR;
+		sample.ColorG = colorsG;
+		sample.ColorB = colorsB;*/
 	}
 }

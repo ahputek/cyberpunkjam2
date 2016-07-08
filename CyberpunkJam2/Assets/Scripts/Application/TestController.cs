@@ -7,6 +7,7 @@ namespace Test {
 	public class TestController : Controller<TestApplication> {
 
 		private SampleController sample;
+
 		public SampleController Sample {
 			get {
 				return sample = Assert<SampleController>(sample);
@@ -25,6 +26,16 @@ namespace Test {
 			};
 
 			return names[Random.Range(0, names.Length)];
+		}
+
+		public static string GetRandomColor() {
+			string [] colors = {
+				"0",
+				"0",
+				"0"
+			};
+
+			return colors[Random.Range(0, colors.Length)];
 		}
 	}
 }

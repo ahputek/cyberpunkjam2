@@ -7,6 +7,11 @@ using Test;
 public class SampleModel : Model<TestApplication> {
 
 	private string name;
+	private string colors;
+	/*private int colorsR;
+	private int colorsG;
+	private int colorsB;*/
+
 	public string Name {
 		get {
 			return name;
@@ -21,4 +26,52 @@ public class SampleModel : Model<TestApplication> {
 			sampleView.OnNameChange();
 		}
 	}
+
+	public string Color {
+		get {
+			return colors;
+		}
+		set {
+			colors = value;
+			SampleView sampleView = App.View.Sample;
+
+			sampleView.OnColorChange ();
+		}
+	}
+	/*public int ColorR {
+		get {
+			return colorsR;
+		}
+		set {
+			colorsR = value;
+
+			SampleView sampleView = App.View.Sample;
+		
+			sampleView.OnColorChange ();
+		}
+	}
+	public int ColorG {
+		get {
+			return colorsG;
+		}
+		set {
+			colorsG = value;
+
+			SampleView sampleView = App.View.Sample;
+
+			sampleView.OnColorChange ();
+		}
+	}
+	public int ColorB {
+		get {
+			return colorsB;
+		}
+		set {
+			colorsB = value;
+
+			SampleView sampleView = App.View.Sample;
+
+			sampleView.OnColorChange ();
+		}
+	}*/
 }
