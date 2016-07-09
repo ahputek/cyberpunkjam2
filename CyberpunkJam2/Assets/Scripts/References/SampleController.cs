@@ -28,12 +28,6 @@ public class SampleController : Controller<TestApplication> {
 			SampleModel sampleModel = (SampleModel)p_data [0];
 
 			string newColor = p_data [1].ToString ();
-			/*string strColorR = p_data[0].ToString();
-			string strColorG = p_data[0].ToString();
-			string strColorB = p_data[0].ToString();
-			int newColorR = int.Parse(strColorR);
-			int newColorG = int.Parse(strColorG);
-			int newColorB = int.Parse(strColorB);*/
 
 			SetColor(sampleModel, newColor);
 		}
@@ -44,10 +38,7 @@ public class SampleController : Controller<TestApplication> {
 		sample.Name = name;
 	}
 
-	public void SetColor (SampleModel sample, string colors/*int colorsR, int colorsG, int colorsB*/) {
+	public void SetColor (SampleModel sample, string colors) {
 		sample.Color = colors;
-		/*sample.ColorR = colorsR;
-		sample.ColorG = colorsG;
-		sample.ColorB = colorsB;*/
 	}
 }

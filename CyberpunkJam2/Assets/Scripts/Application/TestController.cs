@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 using Framework.MVC;
 
@@ -7,10 +8,17 @@ namespace Test {
 	public class TestController : Controller<TestApplication> {
 
 		private SampleController sample;
+		private ItemController item;
 
 		public SampleController Sample {
 			get {
 				return sample = Assert<SampleController>(sample);
+			}
+		}
+
+		public ItemController Item {
+			get {
+				return item = Assert<ItemController> (item);
 			}
 		}
 
@@ -36,6 +44,12 @@ namespace Test {
 			};
 
 			return colors[Random.Range(0, colors.Length)];
+		}
+
+		public static bool GetSystemStatus() {
+			bool SlotStat = true;
+
+			return SlotStat; 
 		}
 	}
 }
