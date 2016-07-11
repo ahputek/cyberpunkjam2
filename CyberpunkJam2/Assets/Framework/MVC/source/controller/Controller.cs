@@ -27,7 +27,7 @@ namespace Framework.MVC
         /// <summary>
         /// Returns app as a custom 'T' type.
         /// </summary>
-        new public T app { get { return (T)base.app; } }
+        new public T App { get { return (T)base.App; } }
     }
 
 }

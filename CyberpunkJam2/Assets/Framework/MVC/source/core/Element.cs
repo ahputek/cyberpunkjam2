@@ -14,7 +14,7 @@ namespace Framework.MVC
         /// <summary>
         /// Returns app as a custom 'T' type.
         /// </summary>
-        new public T app { get { return (T)base.app; } }
+        new public T App { get { return (T)base.App; } }
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ namespace Framework.MVC
         /// <summary>
         /// Reference to the root application of the scene.
         /// </summary>
-        public BaseApplication app { get { return m_app = Assert<BaseApplication>(m_app, true); } }
+        public BaseApplication App { get { return m_app = Assert<BaseApplication>(m_app, true); } }
         private BaseApplication m_app;
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Framework.MVC
         /// </summary>
         /// <param name="p_event"></param>
         /// <param name="p_data"></param>
-        public void Notify(string p_event,params object[] p_data) { app.Notify(p_event, this, p_data); }
+        public void Notify(string p_event,params object[] p_data) { App.Notify(p_event, this, p_data); }
         
         /// <summary>
         /// Sends a notification to all controllers, after 'delay', passing this instance as 'target' and some 'data'.
@@ -177,7 +177,7 @@ namespace Framework.MVC
         /// <param name="p_delay"></param>
         /// <param name="p_event"></param>
         /// <param name="p_data"></param>
-        public void Notify(float p_delay,string p_event,params object[] p_data) { app.Notify(p_delay,p_event, this, p_data); }
+        public void Notify(float p_delay,string p_event,params object[] p_data) { App.Notify(p_delay,p_event, this, p_data); }
 
         /// <summary>
         /// Logs a message using this element information.
@@ -186,7 +186,7 @@ namespace Framework.MVC
         public void Log(object p_msg, int p_verbose = 0)
         {
             //Only outputs logs equal or bigger than the application 'verbose' level.
-            if (p_verbose <= app.verbose) Debug.Log(GetType().Name + "> " + p_msg);
+            if (p_verbose <= App.verbose) Debug.Log(GetType().Name + "> " + p_msg);
         }
 
     }
