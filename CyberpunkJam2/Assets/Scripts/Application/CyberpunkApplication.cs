@@ -5,8 +5,8 @@ using Framework.MVC;
 
 public class CyberpunkApplication : BaseApplication<CyberpunkModel, CyberpunkView, CyberpunkController> {
 
-	private void Start () {
+	protected override void Start () {
+		base.Start ();
 		SceneAdd("Robots");
-		
 	}
 }
