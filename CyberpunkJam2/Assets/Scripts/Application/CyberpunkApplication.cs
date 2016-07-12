@@ -8,5 +8,6 @@ public class CyberpunkApplication : BaseApplication<CyberpunkModel, CyberpunkVie
 	protected override void Start () {
 		base.Start ();
 		SceneAdd("Robots");
+		SceneAdd("Lobby");
 	}
 }
