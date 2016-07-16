@@ -8,19 +8,23 @@ namespace Test {
 	public class TestView : View<TestApplication> {
 
 		private SampleView sample;
-		private ItemView item;
-		private Button testButton;
-		private string testString;
-
 		public SampleView Sample { 
 			get {
 				return sample = Assert<SampleView>(sample);
 			}
 		}
 
+		private ItemView item;
 		public ItemView Item {
 			get {
 				return item = Assert<ItemView> (item);
+			}
+		}
+
+		private InventoryView inventory;
+		public InventoryView Inventory {
+			get {
+				return inventory = Assert<InventoryView> (inventory);
 			}
 		}
 
@@ -43,15 +47,6 @@ namespace Test {
 				SampleModel sampleModel = App.Model.Sample;
 
 				App.Notify (Constants.CHANGE, sampleController, sampleModel, TestController.GetRandomColor());
-			}
-
-			if (Input.GetMouseButtonUp (0)) {
-
-				ItemController itemController = App.Controller.Item;
-
-				ItemModel itemModel = App.Model.Item;
-
-				App.Notify (Constants.MOUSECLICK, itemController, itemModel, TestController.GetSystemStatus());
 			}
 		}
 	}
