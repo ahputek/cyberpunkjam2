@@ -5,6 +5,16 @@ using Framework.MVC;
 
 public class RobotModel : Model<CyberpunkApplication> {
 
+	private int health;
+	public int Health {
+		get {
+			return health;
+		}
+		set {
+			health = value;
+		}
+	}
+
 	private int accuracy;
 	public int Accuracy {
 		get {

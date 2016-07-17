@@ -21,17 +21,17 @@ namespace Framework.MVC
         /// <summary>
         /// Model reference using the new type.
         /// </summary>
-        new public M model { get { return (M)(object)base.model; } }
+        new public M Model { get { return (M)(object)base.Model; } }
 
         /// <summary>
         /// View reference using the new type.
         /// </summary>
-        new public V view { get { return (V)(object)base.view; } }
+        new public V View { get { return (V)(object)base.View; } }
 
         /// <summary>
         /// Controller reference using the new type.
         /// </summary>
-        new public C controller { get { return (C)(object)base.controller; } }
+        new public C Controller { get { return (C)(object)base.Controller; } }
     }
 
     /// <summary>
@@ -68,19 +68,19 @@ namespace Framework.MVC
         /// <summary>
         /// Fetches the root Model instance.
         /// </summary>
-        public Model model { get { return m_model = Assert<Model>(m_model); } }
+        public Model Model { get { return m_model = Assert<Model>(m_model); } }
         private Model m_model;
 
         /// <summary>
         /// Fetches the root View instance.
         /// </summary>
-        public View view { get { return m_view = Assert<View>(m_view); } }
+        public View View { get { return m_view = Assert<View>(m_view); } }
         private View m_view;
 
         /// <summary>
         /// Fetches the root Controller instance.
         /// </summary>
-        public Controller controller { get { return m_controller = Assert<Controller>(m_controller); } }
+        public Controller Controller { get { return m_controller = Assert<Controller>(m_controller); } }
         private Controller m_controller;
 
         /// <summary>
