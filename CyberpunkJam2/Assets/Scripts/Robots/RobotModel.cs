@@ -11,7 +11,7 @@ public class RobotModel : Model<CyberpunkApplication> {
 			return health;
 		}
 		set {
-			health = value;
+			health = Mathf.Clamp(value, 0, 10000);
 		}
 	}
 

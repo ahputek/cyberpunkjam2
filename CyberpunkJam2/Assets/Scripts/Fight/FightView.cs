@@ -15,7 +15,5 @@ public class FightView : View<CyberpunkApplication> {
 	public void UpdateDisplay (FightModel fight) {
 		this.player1Slider.value = fight.Robots [0].Health;
 		this.player2Slider.value = fight.Robots [1].Health;
-
-		Debug.Log("Updated fight");
 	}
 }

@@ -12,9 +12,16 @@ public class CyberpunkController : Controller<CyberpunkApplication> {
 		}
 	}
 
+	private RobotController robot;
+	public RobotController Robot {
+		get {
+			return robot = Assert<RobotController>(robot, true);
+		}
+	}
+
 	public override void OnNotification (string p_event, Object p_target, params object[] p_data)
 	{
 		base.OnNotification (p_event, p_target, p_data);
-		Debug.Log (p_event);
+//		Debug.Log(p_event + ", " + p_target + ", " + p_data.Length);
 	}
 }

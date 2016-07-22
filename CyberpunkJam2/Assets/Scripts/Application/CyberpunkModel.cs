@@ -8,7 +8,7 @@ public class CyberpunkModel : Model<CyberpunkApplication> {
 	private FightModel fight;
 	public FightModel Fight {
 		get {
-			return fight = Assert<FightModel> (fight);
+			return fight = Assert<FightModel> (fight, true);
 		}
 	}
 }
