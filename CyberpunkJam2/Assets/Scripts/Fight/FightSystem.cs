@@ -63,7 +63,7 @@ public class FightSystem : MonoBehaviour {
 	private void Attack (RobotModel attacker, RobotModel target) {
 		CyberpunkApplication app = CyberpunkApplication.Instance;
 		app.Notify(Constants.ATTACK, app.Controller.Robot, attacker, target);
-		app.Notify(Constants.UPDATE_FIGHT, app.Controller.Fight,  app.Model.Fight);
+		app.Notify(0.5f, Constants.UPDATE_FIGHT, app.Controller.Fight,  app.Model.Fight);
 
 		ResolveRobotStatus(attacker, target);
 	}
