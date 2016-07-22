@@ -1,0 +1,4 @@
+<Fight>
+	<Robot name="Kobe" health="300" power="100" />
+	<Robot name="LeBron" health="400" power="50" />
+</Fight>

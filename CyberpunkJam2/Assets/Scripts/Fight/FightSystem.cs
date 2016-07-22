@@ -3,17 +3,19 @@ using System.Collections;
 
 public class FightSystem : MonoBehaviour {
 
-	private enum Turn { IDLE, ROBOT_A, ROBOT_B, DONE };
+	public static FightSystem Instance { private set; get; }
+
+	public enum Turn { IDLE, ROBOT_A, ROBOT_B, DONE };
 
 	[SerializeField]
-	private Turn turn;
+	public Turn turn;
 
 	private RobotModel robotA;
 	private RobotModel robotB;
 
 	private void Awake () {
+		Instance = this;
 		this.turn = Turn.IDLE;
-
 		StartCoroutine(FSM());
 	}
 
