@@ -5,5 +5,4 @@ using Framework.MVC;
 
 public class RobotsManagerView : View<CyberpunkApplication> {
 
-
 }

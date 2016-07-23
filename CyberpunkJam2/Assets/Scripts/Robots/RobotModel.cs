@@ -5,6 +5,26 @@ using Framework.MVC;
 
 public class RobotModel : Model<CyberpunkApplication> {
 
+	private string name;
+	public string Name {
+		get {
+			return name;
+		}
+		set {
+			name = value;
+		}
+	}
+
+	private int health;
+	public int Health {
+		get {
+			return health;
+		}
+		set {
+			health = Mathf.Clamp(value, 0, 10000);
+		}
+	}
+
 	private int accuracy;
 	public int Accuracy {
 		get {
