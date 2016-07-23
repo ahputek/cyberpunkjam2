@@ -38,5 +38,8 @@ public class FightController : Controller<CyberpunkApplication> {
 		robot.Name = node.Attributes["name"].Value;
 		robot.Health = int.Parse(node.Attributes["health"].Value);
 		robot.Power = int.Parse(node.Attributes["power"].Value);
+		robot.Speed = int.Parse (node.Attributes ["speed"].Value);
+		robot.Hardness = int.Parse (node.Attributes ["hardness"].Value);
+		robot.Accuracy = int.Parse (node.Attributes ["accuracy"].Value);
 	}
 }

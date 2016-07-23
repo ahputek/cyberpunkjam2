@@ -28,7 +28,26 @@ public class RobotController : Controller<CyberpunkApplication> {
 			view.Attack();
 		}
 
-		int damage = attacker.Power;
+		int diceResult, damage;
+		int HitRate = ResolveHitRate(attacker, target);
+		int BlockRate = ResolveBlockRate (target);
+		int DodgeRate = ResolveDodgeRate (attacker, target);
+
+		if (HitRate > (diceResult = DieHitRate ())) {
+			//insert dodge animation for target here, attacker misses
+			damage = 0;
+		} 
+		else {
+			damage = ResolveDamage (attacker, target);
+
+			if (BlockRate > (diceResult = DieBlockRate ())) {
+				//insert animation here
+				damage = ResolveDamage (attacker, target);
+			}
+		}
+
+		//damage = ResolveDamage (attacker, target);
+		//Debug.Log ("ReducedDmg: "+damage.ToString());
 
 		ReceiveAttack (target, damage);
 	}
@@ -41,10 +60,69 @@ public class RobotController : Controller<CyberpunkApplication> {
 		}
 
 		target.Health -= damage;
+		//Debug.Log ("TargetHP: "+target.Health.ToString ());
 
 		if (target.Health <= 0) {
 //			Die (target);
 		}
+	}
+
+	#region HitRate, BlockRate, DodgeRate, DiceRates, and Damage Reduction Computation
+	public int ResolveDamage(RobotModel attacker, RobotModel target){
+		//Initial Stats of Damage
+		int attackerDamage = attacker.Power + (attacker.Accuracy/5);
+		int targetDefense = target.Hardness / 5;
+
+		//Damage mitigation
+		int totalDamage = attackerDamage - targetDefense;
+		return totalDamage;
+	}
+
+	public int ResolveHitRate(RobotModel attacker, RobotModel target){
+		//Initial Stats or Computation for hit and dodge rate using basic stats
+		int attackerHitRate = attacker.Accuracy + (attacker.Speed/5);
+		int targetDodgeRate = target.Speed;
+
+		//Final equation for Hitrate
+		int hitRate = 100 - (70 + (attackerHitRate - targetDodgeRate));
+		return hitRate;
+	}
+
+	public int DieHitRate(){
+		//Dice Equation for the HitRate
+		int diceResult = 5*(Random.Range (1, 10) + Random.Range (1, 10));
+		return diceResult;
+	}
+
+	public int ResolveBlockRate(RobotModel target){
+		//Equation for the block rate of the targetted robot
+		int targetBlockRate = (target.Hardness / 3) + (target.Power / 5);
+
+		//Final equation for BlockRate
+		int blockRate = 100 - (20 + targetBlockRate);
+		return blockRate;
+	}
+
+	public int DieBlockRate(){
+		//Dice Equation for the BlockRate
+		int diceResult = 5*(Random.Range(1,10) + Random.Range(1,10));
+		return diceResult;
+	}
+
+	public int ResolveDodgeRate(RobotModel attacker, RobotModel target){
+		//Equation for the DodgeRate of the target
+		int targetDodgeRate = target.Speed;
+		int attackerHitRate = ResolveHitRate (attacker, target);
+
+		//Final Equation for the DodgeRate of the target
+		int dodgeRate = 100 - (60 - (attackerHitRate - targetDodgeRate));
+		return dodgeRate;
+	}
+
+	public int DieDodgeRate(){
+		//Dice Equation for the DodgeRate
+		int diceResult = 5 * Random.Range(1,20);
+		return diceResult;
 	}
 
 	public void Win (RobotModel robot) {
@@ -54,6 +132,7 @@ public class RobotController : Controller<CyberpunkApplication> {
 			view.Win();
 		}
 	}
+	#endregion
 
 	public void Lose (RobotModel robot) {
 		// get view, then play animation
