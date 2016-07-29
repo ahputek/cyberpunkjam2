@@ -16,5 +16,6 @@ public class BookFightView : View<CyberpunkApplication> {
 
 	public void Fight () {
 		App.Notify(Constants.START_FIGHT);
+		FightSystem.Instance.turn = FightSystem.Turn.START;
 	}
 }
