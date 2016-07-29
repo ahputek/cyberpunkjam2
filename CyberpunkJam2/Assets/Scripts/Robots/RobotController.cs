@@ -124,6 +124,7 @@ public class RobotController : Controller<CyberpunkApplication> {
 		int diceResult = 5 * Random.Range(1,20);
 		return diceResult;
 	}
+	#endregion
 
 	public void Win (RobotModel robot) {
 		// get view, then play animation
@@ -132,7 +133,6 @@ public class RobotController : Controller<CyberpunkApplication> {
 			view.Win();
 		}
 	}
-	#endregion
 
 	public void Lose (RobotModel robot) {
 		// get view, then play animation
@@ -140,5 +140,43 @@ public class RobotController : Controller<CyberpunkApplication> {
 		if(view != null) {
 			view.Lose();
 		}
+	}
+
+	public void AddStat (RobotModel robot, string stat) {
+		switch(stat) {
+		case "STR":
+			robot.Power++;
+			break;
+		case "AGI":
+			robot.Speed++;
+			break;
+		case "VIT":
+			robot.Hardness++;
+			break;
+		case "DEX":
+			robot.Accuracy++;
+			break;
+		}
+
+		robot.SkillPoints--;
+	}
+
+	private const int BASE_HEALTH = 300;
+	private const int HEALTH_MULTIPLIER = 5;
+
+	public static int ResolveHealth (RobotModel robot) {
+		return BASE_HEALTH + (HEALTH_MULTIPLIER * robot.Hardness);
+	}
+
+	public static int ResolveDamage (RobotModel robot) {
+		return robot.Power + Mathf.CeilToInt(robot.Accuracy / 5);
+	}
+
+	public static int ResolveDefense (RobotModel robot) {
+		return Mathf.CeilToInt(robot.Hardness / 5);
+	}
+
+	public static int ResolveAttackSpeed (RobotModel robot) {
+		return robot.Speed;
 	}
 }

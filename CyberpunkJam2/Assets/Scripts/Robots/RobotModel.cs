@@ -114,4 +114,34 @@ public class RobotModel : Model<CyberpunkApplication> {
 			draw = value;
 		}
 	}
+
+	private int level;
+	public int Level {
+		get {
+			return level;
+		}
+		set {
+			level = value;
+		}
+	}
+
+	private int exp;
+	public int Exp {
+		get {
+			return exp;
+		}
+		set {
+			exp = value;
+		}
+	}
+
+	private int skillPoints;
+	public int SkillPoints {
+		get {
+			return skillPoints;
+		}
+		set {
+			skillPoints = value;
+		}
+	}
 }

@@ -31,6 +31,7 @@ public class FightController : Controller<CyberpunkApplication> {
 			ReadRobot(node.ChildNodes.Item(i), fight.Robots[i]);
 		}
 
+		App.Notify(Constants.UPDATE_HANGAR, App.Controller.Hangar, fight.PlayerRobot);
 		App.Notify (Constants.UPDATE_FIGHT, this, App.Model.Fight);
 	}
 

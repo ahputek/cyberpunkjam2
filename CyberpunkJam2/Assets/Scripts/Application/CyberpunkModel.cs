@@ -11,4 +11,11 @@ public class CyberpunkModel : Model<CyberpunkApplication> {
 			return fight = Assert<FightModel> (fight, true);
 		}
 	}
+
+	private BookFightModel bookFight;
+	public BookFightModel BookFight {
+		get {
+			return bookFight = Assert<BookFightModel>(bookFight, true);
+		}
+	}
 }
