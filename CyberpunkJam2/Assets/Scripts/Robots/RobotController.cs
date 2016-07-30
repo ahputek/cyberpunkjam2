@@ -127,6 +127,8 @@ public class RobotController : Controller<CyberpunkApplication> {
 	#endregion
 
 	public void Win (RobotModel robot) {
+		robot.Win++;
+
 		// get view, then play animation
 		RobotView view = robot.GetComponent<RobotView>();
 		if(view != null) {
@@ -135,6 +137,8 @@ public class RobotController : Controller<CyberpunkApplication> {
 	}
 
 	public void Lose (RobotModel robot) {
+		robot.Loss++;
+
 		// get view, then play animation
 		RobotView view = robot.GetComponent<RobotView>();
 		if(view != null) {

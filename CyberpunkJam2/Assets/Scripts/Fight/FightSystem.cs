@@ -53,6 +53,8 @@ public class FightSystem : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 		if(IsAlive(robotA) && IsAlive(robotB))
 			this.turn = Turn.ROBOT_B;
+		else
+			this.turn = Turn.DONE;
 		yield return new WaitUntil(() => this.turn != Turn.ROBOT_A);
 	}
 
@@ -68,13 +70,17 @@ public class FightSystem : MonoBehaviour {
 		yield return new WaitForSeconds(1);
 		if(IsAlive(robotA) && IsAlive(robotB))
 			this.turn = Turn.ROBOT_A;
+		else
+			this.turn = Turn.DONE;
 		yield return new WaitUntil(() => this.turn != Turn.ROBOT_B);
 	}
 
 	private IEnumerator DONE () {
 		yield return null;
-
+		CyberpunkApplication.Instance.Notify(2, Constants.RELOAD_GAME);
 		yield return new WaitUntil(() => this.turn != Turn.DONE);
+
+
 	}
 
 	private void Attack (RobotModel attacker, RobotModel target) {

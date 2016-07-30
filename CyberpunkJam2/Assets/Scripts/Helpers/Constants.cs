@@ -11,6 +11,7 @@ public class Constants {
 	public const string UPDATE_BOOK_FIGHT = "UpdateBookFight";
 	public const string UPDATE_HANGAR = "UpdateHangar";
 
+	public const string RELOAD_GAME = "ReloadGame";
 	public const string START_FIGHT = "StartFight";
 
 	public const string ATTACK = "Attack";
