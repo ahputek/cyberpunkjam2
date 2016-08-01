@@ -25,6 +25,16 @@ public class RobotModel : Model<CyberpunkApplication> {
 		}
 	}
 
+	private int maxHealth;
+	public int MaxHealth {
+		get {
+			return maxHealth;
+		}
+		set {
+			maxHealth = value;
+		}
+	}
+
 	private int accuracy;
 	public int Accuracy {
 		get {

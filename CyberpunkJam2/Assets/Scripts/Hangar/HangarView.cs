@@ -59,6 +59,16 @@ public class HangarView : View<CyberpunkApplication> {
 		"<color=\"" + Constants.MAIN_COLOR +"\">" + "Damage: " + RobotController.ResolveDamage(robot) + "</color>\n" +
 		"<color=\"" + Constants.MAIN_COLOR +"\">" + "Armor: " + RobotController.ResolveDefense(robot) + "</color>\n" +
 		"<color=\"" + Constants.MAIN_COLOR +"\">" + "Atk Speed: " + RobotController.ResolveAttackSpeed(robot) + "</color>\n";
+
+		bool showButton = robot.SkillPoints > 0;
+		GetStatButton(this.strengthBar).SetActive(showButton);
+		GetStatButton(this.agilityBar).SetActive(showButton);
+		GetStatButton(this.vitalityBar).SetActive(showButton);
+		GetStatButton(this.dextirityBar).SetActive(showButton);
+	}
+
+	private GameObject GetStatButton (StatBar bar) {
+		return bar.transform.GetChild(0).gameObject;
 	}
 
 	#region UI events
@@ -70,6 +80,8 @@ public class HangarView : View<CyberpunkApplication> {
 		// dirty usage of robot controller
 		RobotController robotController = App.Controller.Robot;
 		robotController.AddStat(this.currentRobot, stat);
+
+		UpdateDisplay(this.currentRobot);
 	}
 	#endregion
 }

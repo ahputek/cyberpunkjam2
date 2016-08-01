@@ -6,8 +6,6 @@ using Framework.MVC;
 
 public class FightModel : Model<CyberpunkApplication> {
 
-	private TextAsset textAsset;
-
 	public RobotModel[] Robots;
 
 	public RobotModel PlayerRobot {
@@ -22,5 +20,9 @@ public class FightModel : Model<CyberpunkApplication> {
 
 		this.playerRobot = this.Robots[0];
 		App.Notify(Constants.LOAD_XML, App.Controller.Fight, this);
+
+		// temporarily give 40 skill points
+		this.playerRobot.SkillPoints += 100;
+		App.Notify(Constants.UPDATE_HANGAR, App.Controller.Robot, this.playerRobot);
 	}
 }

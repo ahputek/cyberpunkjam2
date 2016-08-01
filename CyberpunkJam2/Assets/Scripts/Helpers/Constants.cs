@@ -4,7 +4,7 @@ using System.Collections;
 public class Constants {
 
 	public const string WHITE = "#ffffff";
-	public const string MAIN_COLOR = "#0D4C37FF";
+	public const string MAIN_COLOR = "#1EA55BFF";
 
 	public const string LOAD_XML = "LoadXML";
 	public const string UPDATE_FIGHT = "UpdateFight";
@@ -17,6 +17,7 @@ public class Constants {
 	public const string ATTACK = "Attack";
 	public const string WIN = "Win";
 	public const string LOSE = "Lose";
+	public const string IDLE = "Idle";
 
 	public const string ADD_STAT = "AddStat";
 }

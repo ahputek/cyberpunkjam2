@@ -62,5 +62,9 @@ public class RobotView : View<CyberpunkApplication> {
 	public void Lose () {
 		this.animator.Play(GetAnimationString(LOSE, LOSE_COUNT));
 	}
+
+	public void Idle () {
+		this.animator.Play(GetAnimationString(IDLE, IDLE_COUNT));
+	}
 	#endregion
 }

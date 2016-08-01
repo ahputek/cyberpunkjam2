@@ -37,6 +37,7 @@ public class FightController : Controller<CyberpunkApplication> {
 
 	private void ReadRobot (XmlNode node, RobotModel robot) {
 		robot.Name = node.Attributes["name"].Value;
+		robot.MaxHealth = int.Parse(node.Attributes["health"].Value);
 		robot.Health = int.Parse(node.Attributes["health"].Value);
 		robot.Power = int.Parse(node.Attributes["power"].Value);
 		robot.Speed = int.Parse (node.Attributes ["speed"].Value);

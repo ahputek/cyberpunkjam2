@@ -19,6 +19,10 @@ public class RobotController : Controller<CyberpunkApplication> {
 			RobotModel robot = (RobotModel) p_data[0];
 			Lose(robot);
 		}
+		else if(p_event.Equals(Constants.IDLE)) {
+			RobotModel robot = (RobotModel) p_data[0];
+			Idle(robot);
+		}
 	}
 
 	public void Attack (RobotModel attacker, RobotModel target) {
@@ -125,9 +129,17 @@ public class RobotController : Controller<CyberpunkApplication> {
 		return diceResult;
 	}
 	#endregion
+	public void Idle (RobotModel robot) {
+		// get view, then play animation
+		RobotView view = robot.GetComponent<RobotView>();
+		if(view != null) {
+			view.Idle();
+		}
+	}
 
 	public void Win (RobotModel robot) {
 		robot.Win++;
+		robot.SkillPoints += 5;
 
 		// get view, then play animation
 		RobotView view = robot.GetComponent<RobotView>();
@@ -138,6 +150,7 @@ public class RobotController : Controller<CyberpunkApplication> {
 
 	public void Lose (RobotModel robot) {
 		robot.Loss++;
+		robot.SkillPoints += 2;
 
 		// get view, then play animation
 		RobotView view = robot.GetComponent<RobotView>();
@@ -147,6 +160,10 @@ public class RobotController : Controller<CyberpunkApplication> {
 	}
 
 	public void AddStat (RobotModel robot, string stat) {
+		if(robot.SkillPoints <= 0) {
+			return;
+		}
+
 		switch(stat) {
 		case "STR":
 			robot.Power++;

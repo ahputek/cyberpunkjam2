@@ -1,4 +1,4 @@
 <Fight>
-	<Robot name="Kobe" health="300" power="100" speed="1000" hardness="50" accuracy="50" />
-	<Robot name="LeBron" health="400" power="50" speed="30" hardness="100" accuracy="100" />
+	<Robot name="Kobe" health="300" power="50" speed="50" hardness="50" accuracy="50" />
+	<Robot name="LeBron" health="400" power="50" speed="30" hardness="75" accuracy="75" />
 </Fight>

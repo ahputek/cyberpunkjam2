@@ -27,8 +27,8 @@ public class BookFightTab : MonoBehaviour {
 		value += "DEX: " + robot.Accuracy;
 		value += ENDLINE;
 		value += "VIT: " + robot.Hardness;
-		value += ENDLINE;
-		value += "Record: " + robot.Win + "-" + robot.Loss + "-" + robot.Draw;
+//		value += ENDLINE;
+//		value += "Record: " + robot.Win + "-" + robot.Loss + "-" + robot.Draw;
 		return value;
 	}
 }

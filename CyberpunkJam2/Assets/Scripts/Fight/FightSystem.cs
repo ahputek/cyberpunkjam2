@@ -35,6 +35,11 @@ public class FightSystem : MonoBehaviour {
 	private IEnumerator START () {
 		yield return null;
 
+		CyberpunkApplication app = CyberpunkApplication.Instance;
+		app.Notify (Constants.UPDATE_FIGHT, this, app.Model.Fight);
+		app.Notify (Constants.IDLE, app.Controller.Robot, app.Model.Fight.Robots[0]);
+		app.Notify (Constants.IDLE, app.Controller.Robot, app.Model.Fight.Robots[1]);
+
 		yield return new WaitForSeconds(1);
 		this.turn = Turn.ROBOT_A;
 
@@ -77,7 +82,10 @@ public class FightSystem : MonoBehaviour {
 
 	private IEnumerator DONE () {
 		yield return null;
+		CyberpunkApplication.Instance.Notify(2, Constants.UPDATE_HANGAR, CyberpunkApplication.Instance.Controller.Hangar, this.robotA);
 		CyberpunkApplication.Instance.Notify(2, Constants.RELOAD_GAME);
+		yield return null;
+		Invoke("ResetState", 2.1f);
 		yield return new WaitUntil(() => this.turn != Turn.DONE);
 
 
@@ -95,14 +103,17 @@ public class FightSystem : MonoBehaviour {
 		if(!IsAlive(target)) {
 			CyberpunkApplication app = CyberpunkApplication.Instance;
 			app.Notify(Constants.WIN, app.Controller.Robot, attacker);
-			app.Notify(Constants.LOSE, app.Controller.Robot, target);
+			app.Notify(1, Constants.LOSE, app.Controller.Robot, target);
 		}
 	}
 
 	private bool IsAlive (RobotModel robot) {
-		Debug.Log(robot.Health > 0);
 		return robot.Health > 0;
 	}
 
-
+	private void ResetState () {
+		this.turn = Turn.IDLE;
+		CyberpunkApplication.Instance.Model.Fight.Robots[0].Health = CyberpunkApplication.Instance.Model.Fight.Robots[0].MaxHealth; 
+		CyberpunkApplication.Instance.Model.Fight.Robots[1].Health = CyberpunkApplication.Instance.Model.Fight.Robots[1].MaxHealth; 
+	}
 }
