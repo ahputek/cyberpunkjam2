@@ -14,6 +14,9 @@ public class LobbyController : Controller<CyberpunkApplication> {
 			LobbyView view = App.View.Lobby;
 			view.Show();
 
+			// refresh robot stats
+			BookFightModel bookFight = App.Model.BookFight;
+			bookFight.Refresh();
 //			App.Notify(Constants.UPDATE_HANGAR);
 		}
 	}

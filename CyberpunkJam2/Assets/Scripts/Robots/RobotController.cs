@@ -31,19 +31,19 @@ public class RobotController : Controller<CyberpunkApplication> {
 		if(view != null) {
 			view.Attack();
 		}
-
-		int diceResult, damage;
+			
+		int diceResult = DieHitRate();
+		int damage;
 		int HitRate = ResolveHitRate(attacker, target);
 		int BlockRate = ResolveBlockRate (target);
 		int DodgeRate = ResolveDodgeRate (attacker, target);
 
-		if (HitRate > (diceResult = DieHitRate ())) {
+		if (HitRate > diceResult) {
 			//insert dodge animation for target here, attacker misses
 			damage = 0;
 		} 
 		else {
 			damage = ResolveDamage (attacker, target);
-
 			if (BlockRate > (diceResult = DieBlockRate ())) {
 				//insert animation here
 				damage = ResolveDamage (attacker, target);
@@ -51,7 +51,6 @@ public class RobotController : Controller<CyberpunkApplication> {
 		}
 
 		//damage = ResolveDamage (attacker, target);
-		//Debug.Log ("ReducedDmg: "+damage.ToString());
 
 		ReceiveAttack (target, damage);
 	}
@@ -64,7 +63,7 @@ public class RobotController : Controller<CyberpunkApplication> {
 		}
 
 		target.Health -= damage;
-		//Debug.Log ("TargetHP: "+target.Health.ToString ());
+		Debug.Log ("TargetHP: "+target.Health.ToString ());
 
 		if (target.Health <= 0) {
 //			Die (target);

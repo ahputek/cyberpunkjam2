@@ -22,7 +22,9 @@ public class FightView : View<CyberpunkApplication> {
 		this.player1Name.text = fight.Robots[0].Name;
 		this.player2Name.text = fight.Robots[1].Name;
 
+		this.player1Slider.maxValue = fight.Robots[0].MaxHealth;
 		this.player1Slider.value = fight.Robots [0].Health;
+		this.player2Slider.maxValue = fight.Robots[1].MaxHealth;
 		this.player2Slider.value = fight.Robots [1].Health;
 	}
 

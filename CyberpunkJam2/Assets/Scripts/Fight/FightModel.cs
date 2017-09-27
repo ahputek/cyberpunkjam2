@@ -22,7 +22,7 @@ public class FightModel : Model<CyberpunkApplication> {
 		App.Notify(Constants.LOAD_XML, App.Controller.Fight, this);
 
 		// temporarily give 40 skill points
-		this.playerRobot.SkillPoints += 100;
+		this.playerRobot.SkillPoints += 20;
 		App.Notify(Constants.UPDATE_HANGAR, App.Controller.Robot, this.playerRobot);
 	}
 }
